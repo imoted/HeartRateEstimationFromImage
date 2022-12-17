@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(plt)
-# project(sample_fft)
-# project(animation)
+project(heart_rate_estimation)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -16,10 +14,6 @@ include_directories(
 )
 
 add_subdirectory(ooura-fft-cpp)
-# add_executable(sample_fft sample_fft.cpp)
-
-# target_include_directories(sample_fft PRIVATE ${Python3_INCLUDE_DIRS} ${Python3_NumPy_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
-# target_link_libraries(sample_fft fftsg Python3::Python Python3::NumPy)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${Python3_INCLUDE_DIRS} ${Python3_NumPy_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} fftsg Python3::Python Python3::NumPy ${OpenCV_LIBS})

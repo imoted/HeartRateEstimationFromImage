@@ -28,7 +28,7 @@ std::vector<double> MovingAverage(std::vector<double> data, int window_size)
 
 int main() {
 
-    cv::VideoCapture cap(4);
+    cv::VideoCapture cap(0);
     if (!cap.isOpened()) {
         std::cout << "Cannot open the video cam" << std::endl;
         return -1;
@@ -79,12 +79,13 @@ int main() {
             fft_vec.clear();
             std::copy(y2.begin(), y2.end(), std::back_inserter(fft_vec));
             rfftEngine.rfft(fft_vec);
-            // std::cout << fft_vec.size() << std::endl;
-            // std::cout << x.size() << std::endl;
+            for (int i = 0; i < fft_vec.size(); i++) {
+                fft_vec[i] = std::abs(fft_vec[i]);
+            }
 
             plt::cla();
             plt::plot(fft_x, fft_vec);
-            plt::xlim(1, 5);
+            plt::xlim(0.0, 2.0);
             plt::ylim(0, 100);
             // plt::plot(x, y2);
             plt::pause(0.001);
